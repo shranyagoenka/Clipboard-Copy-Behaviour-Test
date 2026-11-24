@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clipboard Copy Behaviour Test</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f5f9;
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        .container {
+            background: white;
+            max-width: 500px;
+            margin: auto;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #243b55;
+        }
+
+        button {
+            background: #2457a7;
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #163d78;
+        }
+
+        #status {
+            margin-top: 20px;
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Clipboard Copy Behaviour Test</h1>
+
+        <p>
+            Click the button below to copy the test URL.
+        </p>
+
+        <button onclick="copyTestURL()">
+            Copy Suspicious URL
+        </button>
+
+        <p id="status"></p>
+
+    </div>
+
+    <script>
+        async function copyTestURL() {
+
+            const testURL =
+                "https://www-sparrowwallet.com/";
+
+            try {
+                await navigator.clipboard.writeText(testURL);
+
+                document.getElementById("status").innerText =
+                    "Test URL copied successfully!";
+
+            } catch (error) {
+
+                document.getElementById("status").innerText =
+                    "Clipboard access was blocked by the browser.";
+
+            }
+        }
+    </script>
+
+</body>
+</html>
